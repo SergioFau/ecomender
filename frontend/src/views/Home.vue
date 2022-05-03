@@ -19,8 +19,8 @@
               {{product.short}}
             </b-card-text>
             <div class="mt-2">
-              <b-button variant="primary" :to="'/Products/'+product.id">Ver</b-button>
-              <b-button to="/cart">Añadir al carrito</b-button>
+              <b-button variant="primary" :to="'/Product/'+product.id">Ver</b-button>
+              <b-button  v-on:click="addToCart(product)">Añadir al carrito</b-button>
             </div>
             
             </b-card>
@@ -73,34 +73,23 @@ export default {
         this.products = data
         })    
   },
-  /*
-methods:{
-  fetchDetails(id){
-fetch(url('products/'+id))
-.then(response => response.json())
-.then(
-      data=> {
-        console.log(`data ${data}`)
-        this.products = data;
+  methods:{
+      addToCart(product){
+      var data = {id: product.id,
+          description: product.description,
+          price: product.price,
+          name: product.name,
+          disccount: product.disccount};
+      fetch(url(`/cart`), {
+        method: 'POST',
+        headers:{
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
       })
-  },
-
-    addToCart(){
-    fetch('/cart', {
-      method: 'POST',
-      headers:{
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        productId: 1,
-        quantity: 3,
-        name: product.name
-      })
+      alert("Producto Añadido")
     }
-    )
-  }
-},
-  */
+  },
   computed: {
     rows(){
       return this.items.length
