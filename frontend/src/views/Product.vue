@@ -1,5 +1,6 @@
 <template>
-    <div style="float:left; text-align:left;margin: 50px;margin-left:10px">    
+    <div style="float:left; text-align:left;margin: 50px;margin-left:10px; display:flex"> 
+      <div style="width:30%">
       <router-link to="/">Volver al listado</router-link>
       <br>
               <b-button style="margin:20px" variant="primary" v-on:click="reload()" :to="'/Product/'+parseInt(product.id - 1)">Anterior</b-button>
@@ -7,9 +8,12 @@
               <br>
       <img v-bind:src="product.mainImage" />
       <br>
-      <p>Nombre: {{product.name}}</p>
+      </div>   
+      <div style="width:70%; margin-top:100px">
+      <p><b>{{product.name}}</b></p>
       <p style="width: 50%">Descripción: {{product.description}}</p>
       <b-button  v-on:click="addToCart(product)">Añadir al carrito</b-button>
+      </div>
     </div>  
 </template>
 <script>

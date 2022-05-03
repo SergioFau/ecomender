@@ -21,8 +21,7 @@
             <div class="mt-2">
               <b-button variant="primary" :to="'/Product/'+product.id">Ver</b-button>
               <b-button  v-on:click="addToCart(product)">Añadir al carrito</b-button>
-            </div>
-            
+            </div>            
             </b-card>
           </b-col>
         </b-row>
@@ -37,7 +36,7 @@
           :per-page="perPage"
           aria-controls="my-table"
         ></b-pagination>
-
+<!--
         <b-table
           id="my-table"
           :items="items"
@@ -45,6 +44,7 @@
           :current-page="currentPage"
           small
         ></b-table>
+        -->
       </div>
     </div>
   </div>
@@ -71,6 +71,7 @@ export default {
       .then(data =>  {
         console.log(`data ${data}`)
         this.products = data
+        this.items = data
         })    
   },
   methods:{
