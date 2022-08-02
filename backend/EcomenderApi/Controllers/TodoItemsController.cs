@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EcomenderApi.Models;
+using EcomenderApi.Data;
 
 namespace EcomenderApi.Controllers
 {
@@ -14,9 +14,9 @@ namespace EcomenderApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly DataContext _context;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(DataContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace EcomenderApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _context.TodoList.ToListAsync();
         }
 
         #region snippet_GetByID
@@ -34,7 +34,7 @@ namespace EcomenderApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _context.TodoList.FindAsync(id);
 
             if (todoItem == null)
             {
@@ -82,7 +82,7 @@ namespace EcomenderApi.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
-            _context.TodoItems.Add(todoItem);
+            _context.TodoList.Add(todoItem);
             await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
@@ -95,13 +95,13 @@ namespace EcomenderApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _context.TodoList.FindAsync(id);
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
+            _context.TodoList.Remove(todoItem);
             await _context.SaveChangesAsync();
 
             return todoItem;
@@ -110,7 +110,7 @@ namespace EcomenderApi.Controllers
 
         private bool TodoItemExists(long id)
         {
-            return _context.TodoItems.Any(e => e.Id == id);
+            return _context.TodoList.Any(e => e.Id == id);
         }
     }
 }

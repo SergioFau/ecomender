@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using EcomenderApi.Models;
 using EcomenderApi.Data;
 
 namespace EcomenderApi
@@ -21,12 +20,12 @@ namespace EcomenderApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(opt => 
+            {
+               opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+        });
             services.AddControllers();
-            services.AddSwaggerGen({c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AASergio", Version = "v2" });
-            });
+            //services.AddSwaggerGen({c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "AASergio", Version = "v2" });});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -9658,11 +9658,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\EcomenderApi.csproj",
+      "projectUniqueName": "c:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\EcomenderApi.csproj",
       "projectName": "EcomenderApi",
-      "projectPath": "C:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\EcomenderApi.csproj",
+      "projectPath": "c:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\EcomenderApi.csproj",
       "packagesPath": "C:\\Users\\Sergio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\obj\\",
+      "outputPath": "c:\\Users\\Sergio\\Desktop\\ecommerce\\backend\\EcomenderApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
